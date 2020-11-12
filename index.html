@@ -1,0 +1,206 @@
+<html><head>
+    <title>YES/NO Dice</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+    html{
+        background-image: url(https://data.whicdn.com/images/234061114/original.jpg);
+        background-color: rgb(170, 132, 151);
+    }
+        div {
+         border: 4px solid black;
+            
+        }
+        #dugme{
+            background-image: url(https://www.famcorfabrics.com/images/thumbs/0003286_discount-designer-upholstery-fabric-malaga-crimson.jpeg);
+            background-color: rgb(145, 49, 68);
+            color: rgb(56, 25, 25);
+            font-size:60px;
+            height: 300px;
+            width: 300px;
+            border: 2px solid rgb(66, 48, 48);
+            position:relative;
+            left: 7%;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 50px;
+            
+        }
+        input[type=radio] {
+              border: 1px;
+              width: 10%;
+              height: 30px;
+              width: 30px;
+              vertical-align: middle;
+        }
+
+        .labela{
+             background-color: #dcc2dd;
+             padding: 15px;
+             border-radius: 25px;
+             border: 2px solid black;
+             font-family: 'Courier New', Courier, monospace;
+
+
+        }
+        .opisDugmica{
+            font-size: 30px;
+        }
+        .donji1{
+            width: 49.55%;
+            font-size: 30px;
+            position: relative;
+            background-color: #dcc2dd;
+            border-radius: 30px;
+            padding:10px;
+            display: inline-block;
+        }
+        .donji2{
+            width: 47%;
+            position:relative;
+            font-size: 30px;
+            background-color: #dcc2dd;
+            border-radius: 30px;
+            padding:10px;
+            display: inline-block;
+            top: -160px;
+            left: 10px;
+
+        }
+        .Kockica{
+            
+            width: 300px;
+            background-color: whitesmoke;
+            border: 2px solid black;
+            padding-top: 110px;
+            padding-bottom: 110px;
+            margin: 10px;
+            font-size: 50px;
+            display: inline-block;
+            text-align: center;
+            
+
+        }
+        #prvaKockica{
+            margin-left: 60px;
+             
+            
+        }
+        #drugaKockica{
+            float: right;
+            margin-right: 60px;
+
+        }
+        
+        
+    </style>
+    <script>
+        function rollDice(){
+            var kockica1 = document.getElementById("prvaKockica");
+            var kockica2 = document.getElementById("drugaKockica");
+            var elementiRadia = document.getElementsByName('biraj ');
+
+            var d1 = Math.floor(Math.random()*6)+1;
+            var d2 = Math.floor(Math.random()*6)+1;
+            var mod = -1;
+            console.log(mod);
+            for(i = 0 ; i <elementiRadia.length ; i++){
+                if(elementiRadia[i].checked){
+                   mod=i;
+                   console.log(mod);
+                }
+            }
+            switch(mod){
+                case 0: 
+                    if(d1 === 1 || d1 === 4)
+                    kockica1.innerHTML = "☠";
+                    else{
+                        kockica1.innerHTML = "OK"
+                    }
+                    if(d2 === 1 || d2 === 4 )
+                    kockica2.innerHTML = "☠";
+                    else{
+                        kockica2.innerHTML = "OK"
+                    } break;
+                case 1:
+                    if(d1 === 1 || d1 === 4)
+                    kockica1.innerHTML = "NO";
+                    else{
+                        kockica1.innerHTML = "__"
+                    }
+                    if(d2 === 1 || d2 === 4 )
+                    kockica2.innerHTML = "NO";
+                    else{
+                        kockica2.innerHTML = "__"
+                    } break;
+
+                case 2:
+                    if(d1 === 1 || d1 === 4)
+                    kockica1.innerHTML = "YES";
+                    else{
+                        kockica1.innerHTML = "__"
+                    }
+                    if(d2 === 1 || d2 === 4 )
+                    kockica2.innerHTML = "YES";
+                    else{
+                        kockica2.innerHTML = "__"
+                    } break;
+                case 3:
+                    if(d1<4) kockica1.innerHTML="YES";
+                    else kockica1.innerHTML="NO";
+                    if(d2<3) kockica2.innerHTML="BUT";
+                    else if(d2 ===3 || d2 === 4) kockica2.innerHTML="AND";
+                    else kockica2.innerHTML="__";
+                    break;
+                default: break;
+
+            }
+            
+
+            
+        }
+    </script>
+   </head>
+
+   <body>
+            <span class="labela">
+            <input name="biraj " type="radio" value="Danger Dice">
+            <label for="Danger Dice" class="opisDugmica">Danger Dice</label>
+
+            <input name="biraj " type="radio" value="Disadvantage Dice">
+            <label for="Disadvantage Dice" class="opisDugmica">Disadvantage Dice</label>
+
+            <input name="biraj " type="radio" value="Advantage Dice">
+            <label for="Advantage Dice" class="opisDugmica">Advantage Dice</label>
+
+            <input name="biraj " type="radio" value="Yes-But-No-And">
+            <label for="Yes-But-No-And" class="opisDugmica">Yes-But-No-And</label>
+            </span>
+      
+
+             <button onclick="rollDice()" id="dugme">
+               ROLL
+             </button>
+
+             
+               <div class="donji1"><b>Danger Dice:</b> Roll <b>1</b> when attempting something dangerous.<br>
+                   Roll <b>2</b> if it's very dangerous!<br><br>
+
+                   <b>Disadvantage Dice:</b> Roll <b>1</b>if you are unskilled or at a disadvantage.<br>
+                   Roll <b>2</b> if you are really at a disadvantage! <br><br>
+
+                   <b>Advantage Dice:</b> Roll <b>1</b> if you are skilled or at an advantage.<br>
+                   Roll <b>2</b> if you are really at an advantage! <br><br>
+
+                   <b>Yes-But-No-And Dice:</b> Roll these any time you attempt something
+                   that you might not succeed!<br>
+                
+               </div><div class="donji2">
+                   <div class="Kockica" id="prvaKockica">Prva</div><div class="Kockica" id="drugaKockica">Druga</div></div>
+             
+             
+        
+
+
+   
+
+</body></html>
